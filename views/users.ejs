@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lista de los usuarios</title>
+  </head>
+  <body>
+    Aqui tiene s la lista de los usuarios
+    <h1>Usuarios</h1>
+    <ul>
+      <% users.forEach(user => { %>
+        <li><%= user.name %> - <%= user.email %></li>
+      <% }); %>
+    </ul>
+    
+    
+    </ul>
+  </body>
+</html>
