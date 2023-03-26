@@ -1,8 +1,9 @@
+ejemplos para postman
 post
 {
-    "name": "Alanny",
+    "name": "ejm",
     "password":"11111111",
-    "email": "Alanny@gmail.com",
+    "email": "ejm@gmail.com",
     "google": true,
     "rol": "ADMIN"
 }
