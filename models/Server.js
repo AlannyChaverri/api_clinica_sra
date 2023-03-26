@@ -6,7 +6,7 @@ const conectorMONGO = require("../database/mongo");
 class Server {
   constructor() {
     this.app = express();
-    this.app = cors();
+    this.app.use(cors());
     this.port = process.env.PORT;
     this.usersPath = "/api/users";
     this.auth = "/api/auth";
