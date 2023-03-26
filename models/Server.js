@@ -1,10 +1,12 @@
 const express = require("express");
+const cors = require("cors");
 require("dotenv").config();
 const conectorMONGO = require("../database/mongo");
 
 class Server {
   constructor() {
     this.app = express();
+    this.app = cors();
     this.port = process.env.PORT;
     this.usersPath = "/api/users";
     this.auth = "/api/auth";
