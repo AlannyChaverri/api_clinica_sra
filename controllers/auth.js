@@ -19,6 +19,7 @@ const login = async (req = request, res = response) => {
 
   const usuario = await Usuario.findOne({ email });
   if (!usuario) {
+    console.log("Email no existe");
     return res.status(400).json({
       ok: false,
       msg: "Email no existe",
@@ -27,6 +28,7 @@ const login = async (req = request, res = response) => {
 
   const passwordVlidate = bcrypt.compareSync(password, usuario.password);
   if (!passwordVlidate) {
+    console.log("Password invalido");
     return res.status(400).json({
       ok: false,
       msg: "Email o password invalido",
@@ -34,6 +36,10 @@ const login = async (req = request, res = response) => {
   }
 
   const token = await GenerarJWT(usuario.id);
+  console.log("Inicio de sesion exitoso");
+  console.log(usuario);
+  console.log(email);
+  console.log(password);
   return res.status(200).json({
     ok: true,
     msg: "Inicio de sesion exitoso",
