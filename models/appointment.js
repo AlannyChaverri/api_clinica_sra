@@ -10,6 +10,10 @@ const SchemaAppointmento = new mongoose.Schema({
       type: String,
       required: [true, "El campo apellido es requerido"],
     },
+    dni: {
+      type: String,
+      required: [true, "El campo cedula es requerido"],
+    },
     phone: {
       type: String,
       required: [true, "El campo telefono es requerido"],

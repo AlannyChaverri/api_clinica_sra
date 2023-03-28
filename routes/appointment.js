@@ -25,6 +25,7 @@ router.post(
       .not()
       .isEmpty(),
     check("patient.phone", "El campo teléfono es obligatorio").not().isEmpty(),
+    check("patient.dni", "El campo cedula es obligatorio").not().isEmpty(),
     check("datehour", "El campo fecha y hora es obligatorio").not().isEmpty(),
     check("specialty", "El campo especialidad es obligatorio").not().isEmpty(),
     check("doctor", "El campo doctor es obligatorio").not().isEmpty(),
