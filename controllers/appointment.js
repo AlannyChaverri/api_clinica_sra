@@ -27,16 +27,43 @@ const appointmentPOST = async (req = request, res = response) => {
 
     await appointment.save();
 
-    res.json({
+    res.status(200).json({
       ok: 200,
-      msg: "Mensaje desde el metodo POST",
+      msg: "Cita agendada exitosamente",
       appointment,
     });
   } catch (err) {
     console.log(err);
-    throw new Error("Error en el metodo POST");
+    res.status(500).json({
+      ok: 500,
+      msg: "Ocurrió un error al agendar la cita",
+      error: err.message,
+    });
   }
 };
+
+// const appointmentPOST = async (req = request, res = response) => {
+//   try {
+//     const { patient, datehour, specialty, doctor } = req.body;
+//     const appointment = new Appointment({
+//       patient,
+//       datehour,
+//       specialty,
+//       doctor,
+//     });
+
+//     await appointment.save();
+
+//     res.json({
+//       ok: 200,
+//       msg: "Mensaje desde el metodo POST",
+//       appointment,
+//     });
+//   } catch (err) {
+//     console.log(err);
+//     throw new Error("Error en el metodo POST");
+//   }
+// };
 
 const appointmentPUT = async (req = request, res = response) => {
   try {
