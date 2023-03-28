@@ -10,6 +10,7 @@ class Server {
     this.port = process.env.PORT;
     this.usersPath = "/api/users";
     this.auth = "/api/auth";
+    this.appointmentsPath = "/api/appointments";
 
     //invocamos nuestros metodos
     this.middleWares();
@@ -41,6 +42,7 @@ class Server {
 
   routes() {
     this.app.use(this.usersPath, require("../routes/users"));
+    this.app.use(this.appointmentsPath, require("../routes/appointment"));
     this.app.use(this.auth, require("../routes/auth"));
   }
 
