@@ -12,6 +12,8 @@ class Server {
     this.auth = "/api/auth";
     this.appointmentsPath = "/api/appointments";
 
+    this.citaPath = "/api/citas";
+
     //invocamos nuestros metodos
     this.middleWares();
     this.routes();
@@ -44,6 +46,8 @@ class Server {
     this.app.use(this.usersPath, require("../routes/users"));
     this.app.use(this.appointmentsPath, require("../routes/appointment"));
     this.app.use(this.auth, require("../routes/auth"));
+
+    this.app.use(this.citaPath, require("../routes/citas"));
   }
 
   middleWares() {
