@@ -15,7 +15,7 @@ const {
 } = require("../controllers/citas.js");
 
 //lista de citas y elegir fecha y doctor para una cita
-// router.get("/", citasGET);
+router.get("/citas", citasGET);
 router.get("/", citasGETPOST);
 //lista de horarios Disponibles
 router.get("/listHorarios/:doctor", horariosGet);
