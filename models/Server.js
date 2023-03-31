@@ -32,6 +32,9 @@ class Server {
       console.log(
         `*  Server -> http://127.0.0.1:${this.port}/api/users/      *`
       );
+      console.log(
+        `*  Server -> http://127.0.0.1:${this.port}/api/citas/      *`
+      );
       console.log("*                                                  *");
       console.log(
         `*  El servidor esta corriendo en el puerto ${this.port}    *`
