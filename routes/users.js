@@ -14,7 +14,7 @@ const {
 
 const router = Router();
 
-router.get("/", usersGET);
+// router.get("/", usersGET);
 
 router.get("/", usersGETPOST);
 router.get("/usuarios", usersGET);
