@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
 const conectorMONGO = require("../database/mongo");
+const bodyParser = require("body-parser");
 
 class Server {
   constructor() {
@@ -54,6 +55,7 @@ class Server {
   }
 
   middleWares() {
+    this.app.use(bodyParser.urlencoded({ extended: true }));
     this.app.use(express.json());
     this.app.use(express.static("public"));
   }
