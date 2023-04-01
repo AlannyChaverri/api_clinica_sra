@@ -10,13 +10,23 @@
     <h1>Crear Cita</h1>
     <form id="cita-form" action="/api/citas/createCita" method="POST">
       <h2>Información de la Cita</h2>
+
       <label for="id_Patient">Paciente:</label>
-      <select name="id_Patient" required>
+      <input
+        type="text"
+        name="id_Patient"
+        id="id_Patient"
+        placeholder="Cedula-ID"
+        value=""
+        required
+      />
+      <!-- <select name="id_Patient" required>
         <option value="">Seleccionar</option>
         <% patients.forEach((patient)=>{ %>
         <option value="<%= patient._id %>"><%= patient.name %></option>
         <% }) %>
-      </select>
+      </select> -->
+      <!-- 6421ee1d36271f0166e9a018 -->
       <label for="horario">Horario:</label>
       <select name="horario" required>
         <option value="">Seleccionar</option>
