@@ -13,17 +13,17 @@
       <label for="id_Patient">Paciente:</label>
       <select name="id_Patient" required>
         <option value="">Seleccionar</option>
-        <%patients.forEach((patient)=>{ %>
-        <option value="<%" ="patient._id%">> <%=patient.name%></option>
+        <% patients.forEach((patient)=>{ %>
+        <option value="<%= patient._id %>"><%= patient.name %></option>
         <% }) %>
       </select>
       <label for="horario">Horario:</label>
       <select name="horario" required>
         <option value="">Seleccionar</option>
-        <%horario.forEach((h)=>{ %>
-        <option value="<%" ="h.toISOString()%">
-          > <%=h.toISOString().split('T')[0]+'
-          '+(h.toISOString().split('T')[1]).split('.')[0]%>
+        <% horario.forEach((h)=>{ %>
+        <option value="<%= h.toISOString() %>">
+          <%= h.toISOString().split('T')[0] + ' ' +
+          (h.toISOString().split('T')[1]).split('.')[0] %>
         </option>
         <% }) %>
       </select>
@@ -32,21 +32,21 @@
         type="text"
         name="speciality"
         id="speciality"
-        value="<%=doct.speciality%>"
+        value="<%= doct.speciality %>"
         readonly
       />
       <input
         type="text"
         name="nameDoctor"
         id="nameDoctor"
-        value="<%=doct.name%>"
+        value="<%= doct.name %>"
         readonly
       />
       <input
         type="text"
         name="idDoctor"
         id="idDoctor"
-        value="<%=doct.id%>"
+        value="<%= doct.id %>"
         hidden
       />
       <input type="submit" value="Registrar Cita" />
