@@ -5,6 +5,19 @@ const Patient = require("../models/patients.js");
 const Doctor = require("../models/doctor.js");
 const { horarioDisponible } = require("../helpers/horarioDisponible");
 
+const doctorGET = async (req = request, res = response) => {
+  try {
+    const doctors = await Doctor.find({ state: true });
+    res.status(200).json({
+      msg: "Mensaje desde el metodo GET",
+      doctors,
+    });
+  } catch (error) {
+    console.log(err);
+    throw new Error("Error en el metodo GET");
+  }
+};
+
 const citasGETPOST = async (req = request, res = response) => {
   try {
     const citas = await Cita.find({ state: true });
@@ -150,6 +163,7 @@ const deteleCita = async (req = request, res = response) => {
 
 module.exports = {
   citasGET,
+  doctorGET,
   citasGETPOST,
   citasHorarioPOST,
   horariosGet,

@@ -6,6 +6,7 @@ const router = Router();
 
 const {
   citasGET,
+  doctorGET,
   citasGETPOST,
   citasHorarioPOST,
   horariosGet,
@@ -16,6 +17,8 @@ const {
 
 //lista de citas y elegir fecha y doctor para una cita
 router.get("/citas", citasGET);
+router.get("/doctors", doctorGET);
+
 router.get("/", citasGETPOST);
 //lista de horarios Disponibles
 router.get("/listHorarios/:doctor", horariosGet);
