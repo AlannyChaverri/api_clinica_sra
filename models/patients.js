@@ -1,47 +1,80 @@
-const { Schema, model } = require('mongoose');
-
+const { Schema, model } = require("mongoose");
 
 const SchemaPatient = new Schema({
+  patient: {
     name: {
-        type: String,
-        required: [true,"El nombre es obligatorio"]
+      type: String,
+      required: [true, "El campo nombre es requerido"],
     },
     lastname: {
-        type: String,
-        required: [true,"El apellido es obligatorio"]
+      type: String,
+      required: [true, "El campo apellido es requerido"],
     },
     dni: {
-        type: String,
-        required: [true,"La identificación es obligatoria"]
+      type: String,
+      required: [true, "El campo cedula es requerido"],
     },
     weight: {
-        type: Number,
-        required: [true,"El peso es obligatorio"]
-    },
-    height: {
-        type: Number,
-        required: [true,"La altura es obligatoria"]
+      type: String,
+      required: [true, "El campo peso es requerido"],
     },
     age: {
-        type: Number,
-        required: [true,"La edad es obligatoria"]
+      type: String,
+      required: [true, "El campo edad es requerido"],
     },
-    diseases: [],
-    blood_type: {
+    height: {
+      type: String,
+      required: [true, "El campo altura es requerido"],
+    },
+    diseases: [
+      {
         type: String,
-        required: [true,"El tipo de sangre es obligatorio"]
+        required: [true, "El campo enfermedades es requerido"],
+      },
+    ],
+    allergicMedicines: [
+      {
+        type: String,
+        required: [true, "El campo alergicos es requerido"],
+      },
+    ],
+    bloodType: {
+      type: String,
+      required: [true, "El campo tipo sangre es requerido"],
     },
-    allergies: [],
-    emergency_contact: [{
-        name: { type: String },
-        relationship: { type: String },
-        phone: { type: Number },
-        address: { type: String }
-    }],
-    state:{
-        type:Boolean,
-        default:true
-    }
+  },
+  emergencyContact: [
+    {
+      name: {
+        type: String,
+        required: [
+          true,
+          "El campo nombre del contacto de emergencia es requerido",
+        ],
+      },
+      phone: {
+        type: String,
+        required: [
+          true,
+          "El campo teléfono del contacto de emergencia es requerido",
+        ],
+      },
+      relationship: {
+        type: String,
+        required: [
+          true,
+          "El campo parentezco del contacto de emergencia es requerido",
+        ],
+      },
+      address: {
+        type: String,
+        required: [
+          true,
+          "El campo direccion del contacto de emergencia es requerido",
+        ],
+      },
+    },
+  ],
 });
 
-module.exports = model('patient', SchemaPatient);
+module.exports = model("patient", SchemaPatient);
