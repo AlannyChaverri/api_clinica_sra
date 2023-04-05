@@ -10,6 +10,7 @@ class Server {
     this.app.use(cors());
     this.port = process.env.PORT;
     this.usersPath = "/api/users";
+    this.patientsPath = "/api/patients";
     this.auth = "/api/auth";
     this.appointmentsPath = "/api/appointments";
 
@@ -34,6 +35,9 @@ class Server {
         `*  Server -> http://127.0.0.1:${this.port}/api/users/      *`
       );
       console.log(
+        `*  Server -> http://127.0.0.1:${this.port}/api/patients/      *`
+      );
+      console.log(
         `*  Server -> http://127.0.0.1:${this.port}/api/citas/      *`
       );
       console.log("*                                                  *");
@@ -48,6 +52,7 @@ class Server {
 
   routes() {
     this.app.use(this.usersPath, require("../routes/users"));
+    this.app.use(this.patientsPath, require("../routes/patients"));
     this.app.use(this.appointmentsPath, require("../routes/appointment"));
     this.app.use(this.auth, require("../routes/auth"));
 

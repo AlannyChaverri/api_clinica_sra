@@ -23,10 +23,7 @@ router.post(
   "/",
   [
     check("patient", "El paciente es obligatorio").not().isEmpty(),
-    check(
-      "emergencyContact",
-      "El contacto de emergencia es obligatorio"
-    ).isEmpty(),
+    check("emergencyContact", "El contacto es obligatorio").not().isEmpty(),
 
     validate_fields,
   ],
@@ -35,15 +32,6 @@ router.post(
 
 router.put("/:id", patientsPUT);
 
-router.delete(
-  "/:id",
-  [
-    validarJWT,
-    check("id", "ID no valido en mongo").isMongoId(),
-    validate_fields,
-  ],
-
-  patientsDELETE
-);
+router.delete("/:id", patientsDELETE);
 
 module.exports = router;
