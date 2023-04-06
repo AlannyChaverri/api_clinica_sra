@@ -1,47 +1,49 @@
 const { Schema, model } = require("mongoose");
 
 const SchemaPatient = new Schema({
-  patient: {
-    name: {
+  name: {
+    type: String,
+    required: [true, "El campo nombre es requerido"],
+  },
+  lastname: {
+    type: String,
+    required: [true, "El campo apellido es requerido"],
+  },
+  phone: {
+    type: String,
+    required: [false, "El campo teléfono"],
+  },
+  dni: {
+    type: String,
+    required: [true, "El campo cedula es requerido"],
+  },
+  weight: {
+    type: String,
+    required: [true, "El campo peso es requerido"],
+  },
+  age: {
+    type: String,
+    required: [true, "El campo edad es requerido"],
+  },
+  height: {
+    type: String,
+    required: [true, "El campo altura es requerido"],
+  },
+  diseases: [
+    {
       type: String,
-      required: [true, "El campo nombre es requerido"],
+      required: [true, "El campo enfermedades es requerido"],
     },
-    lastname: {
+  ],
+  allergicMedicines: [
+    {
       type: String,
-      required: [true, "El campo apellido es requerido"],
+      required: [true, "El campo alergicos es requerido"],
     },
-    dni: {
-      type: String,
-      required: [true, "El campo cedula es requerido"],
-    },
-    weight: {
-      type: String,
-      required: [true, "El campo peso es requerido"],
-    },
-    age: {
-      type: String,
-      required: [true, "El campo edad es requerido"],
-    },
-    height: {
-      type: String,
-      required: [true, "El campo altura es requerido"],
-    },
-    diseases: [
-      {
-        type: String,
-        required: [true, "El campo enfermedades es requerido"],
-      },
-    ],
-    allergicMedicines: [
-      {
-        type: String,
-        required: [true, "El campo alergicos es requerido"],
-      },
-    ],
-    bloodType: {
-      type: String,
-      required: [true, "El campo tipo sangre es requerido"],
-    },
+  ],
+  bloodType: {
+    type: String,
+    required: [true, "El campo tipo sangre es requerido"],
   },
   emergencyContact: [
     {
