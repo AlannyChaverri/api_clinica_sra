@@ -22,7 +22,19 @@ router.get("/usuarios", patientsGET);
 router.post(
   "/",
   [
-    check("patient", "El paciente es obligatorio").not().isEmpty(),
+    check("name", "El name es obligatorio").not().isEmpty(),
+    check("lastname", "El lastname es obligatorio").not().isEmpty(),
+    check("phone", "El phone es obligatorio").not().isEmpty(),
+    check("dni", "El dni es obligatorio").not().isEmpty(),
+    check("weight", "El weight es obligatorio").not().isEmpty(),
+    check("age", "El age es obligatorio").not().isEmpty(),
+    check("height", "El height es obligatorio").not().isEmpty(),
+    check("diseases", "El diseases es obligatorio").not().isEmpty(),
+    check("allergicMedicines", "El allergicMedicines es obligatorio")
+      .not()
+      .isEmpty(),
+    check("bloodType", "El bloodType es obligatorio").not().isEmpty(),
+    check("bloodPressure", "El bloodPressure es obligatorio").not().isEmpty(),
     check("emergencyContact", "El contacto es obligatorio").not().isEmpty(),
 
     validate_fields,

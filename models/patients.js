@@ -45,6 +45,10 @@ const SchemaPatient = new Schema({
     type: String,
     required: [true, "El campo tipo sangre es requerido"],
   },
+  bloodPressure: {
+    type: String,
+    required: [true, "El campo presion arterial es requerido"],
+  },
   emergencyContact: [
     {
       name: {

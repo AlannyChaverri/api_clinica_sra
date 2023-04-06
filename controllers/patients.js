@@ -32,8 +32,34 @@ const patientsGET = async (req = request, res = response) => {
 
 const patientsPOST = async (req = request, res = response) => {
   try {
-    const { patient, emergencyContact } = req.body;
-    const paciente = new Paciente({ patient, emergencyContact });
+    const {
+      name,
+      lastname,
+      phone,
+      dni,
+      weight,
+      age,
+      height,
+      diseases,
+      allergicMedicines,
+      bloodType,
+      bloodPressure,
+      emergencyContact,
+    } = req.body;
+    const paciente = new Paciente({
+      name,
+      lastname,
+      phone,
+      dni,
+      weight,
+      age,
+      height,
+      diseases,
+      allergicMedicines,
+      bloodType,
+      bloodPressure,
+      emergencyContact,
+    });
     await paciente.save();
     res.json({
       ok: 200,
