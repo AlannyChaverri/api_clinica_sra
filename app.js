@@ -1,5 +1,4 @@
-const Server=require('./models/server.js');
-const server= new Server();
-
+const Server = require("./models/Server");
+const server = new Server();
 
 server.listen();
