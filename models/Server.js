@@ -1,52 +1,68 @@
-const express = require('express');
-require('dotenv').config();
+const express = require("express");
+require("dotenv").config();
 const cors = require("cors");
-const conectorMONGO = require('../database/mongo');
-const bodyParser = require('body-parser');
+const conectorMONGO = require("../database/mongo");
+const bodyParser = require("body-parser");
 
 class Server {
-    constructor() {
-        this.app = express();
-        this.app.use(cors());
-        this.port = process.env.PORT;
-        this.userPath = '/api/users';
-        this.authPath = '/api/auth';
-        this.citaPath = '/api/appointments';
-        this.patientsPath = "/api/patients";
-        this.consultPath = '/api/consults';
-       
-        this.middleWares();
-        this.routes();
-        this.conectarMongo();
+  constructor() {
+    this.app = express();
+    this.app.use(cors());
+    this.port = process.env.PORT;
+    this.userPath = "/api/users";
+    this.authPath = "/api/auth";
+    this.citaPath = "/api/appointments";
+    this.patientsPath = "/api/patients";
+    this.consultPath = "/api/consults";
 
-        this.app.set("view engine", "ejs");
-        this.app.set("views", __dirname + "/../views");
+    this.middleWares();
+    this.routes();
+    this.conectarMongo();
 
-    }
-    listen() {
-        this.app.listen(this.port, () => {
-            console.log(`El servidor esta corriendo en el puerto ${this.port}`);
-        });
-    }
+    this.app.set("view engine", "ejs");
+    this.app.set("views", __dirname + "/../views");
+  }
+  listen() {
+    this.app.listen(this.port, () => {
+      console.log(
+        `*  http://127.0.0.1:${this.port}/api/auth/IniciarSesion    *`
+      );
+      console.log("*                                                  *");
+      console.log(
+        `*  Server -> http://127.0.0.1:${this.port}/api/users/      *`
+      );
+      console.log(
+        `*  Server -> http://127.0.0.1:${this.port}/api/patients/   *`
+      );
+      console.log(
+        `*  Server -> http://127.0.0.1:${this.port}/api/appointments/ *`
+      );
+      console.log("*                                                  *");
+      console.log(
+        `*  El servidor esta corriendo en el puerto ${this.port}    *`
+      );
 
-    routes() {
-        this.app.use(this.userPath, require('../routes/users.js'))
-        this.app.use(this.citaPath, require('../routes/citas.js'))
-        this.app.use(this.authPath, require('../routes/auth.js'))
-        this.app.use(this.consultPath, require('../routes/consult.js'))
-        this.app.use(this.patientsPath, require('../routes/patients.js'))
-    }
+      console.log("*                                                  *");
+      console.log("****************************************************");
+    });
+  }
 
-    middleWares() {
-        this.app.use(bodyParser.urlencoded({ extended: true }));
-        this.app.use(express.json());
-        this.app.use(express.static('public'))
-    }
+  routes() {
+    this.app.use(this.userPath, require("../routes/users.js"));
+    this.app.use(this.citaPath, require("../routes/citas.js"));
+    this.app.use(this.authPath, require("../routes/auth.js"));
+    this.app.use(this.consultPath, require("../routes/consult.js"));
+    this.app.use(this.patientsPath, require("../routes/patients.js"));
+  }
 
-    conectarMongo() {
-        conectorMONGO();
-    }
+  middleWares() {
+    this.app.use(bodyParser.urlencoded({ extended: true }));
+    this.app.use(express.json());
+    this.app.use(express.static("public"));
+  }
 
-
+  conectarMongo() {
+    conectorMONGO();
+  }
 }
 module.exports = Server;
