@@ -28,14 +28,14 @@ class Server {
   listen() {
     this.app.listen(this.port, () => {
       console.log(
-        `*  Login -> http://127.0.0.1:${this.port}/api/auth/IniciarSesion *`
+        `*  http://127.0.0.1:${this.port}/api/auth/IniciarSesion    *`
       );
       console.log("*                                                  *");
       console.log(
         `*  Server -> http://127.0.0.1:${this.port}/api/users/      *`
       );
       console.log(
-        `*  Server -> http://127.0.0.1:${this.port}/api/patients/      *`
+        `*  Server -> http://127.0.0.1:${this.port}/api/patients/   *`
       );
       console.log(
         `*  Server -> http://127.0.0.1:${this.port}/api/citas/      *`
