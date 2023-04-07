@@ -34,19 +34,11 @@ const usersPOST = async (req = request, res = response) => {
   try {
     const { name, email, password, google, rol } = req.body;
     const user = new Usuario({ name, email, password, google, rol });
-
-    /*    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
-    } */
-
     //Llave o numero de vueltas
     var salt = bcrypt.genSaltSync(10);
     //Algoritmo de encriptado
     user.password = bcrypt.hashSync(password, salt);
-
     await user.save();
-
     res.json({
       ok: 200,
       msg: "Mensaje desde el metodo POST",

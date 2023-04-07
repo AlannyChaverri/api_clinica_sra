@@ -19,7 +19,7 @@ const SchemaPatient = new Schema({
   },
   weight: {
     type: String,
-    required: [true, "El campo peso es requerido"],
+    required: [false, "El campo peso "],
   },
   age: {
     type: String,
@@ -27,12 +27,12 @@ const SchemaPatient = new Schema({
   },
   height: {
     type: String,
-    required: [true, "El campo altura es requerido"],
+    required: [false, "El campo altura "],
   },
   diseases: [
     {
       type: String,
-      required: [true, "El campo enfermedades es requerido"],
+      required: [false, "El campo enfermedades "],
     },
   ],
   allergicMedicines: [
@@ -43,11 +43,11 @@ const SchemaPatient = new Schema({
   ],
   bloodType: {
     type: String,
-    required: [true, "El campo tipo sangre es requerido"],
+    required: [false, "El campo tipo sangre"],
   },
   bloodPressure: {
     type: String,
-    required: [true, "El campo presion arterial es requerido"],
+    required: [false, "El campo presion arterial "],
   },
   emergencyContact: [
     {

@@ -11,6 +11,7 @@ const {
   patientsPUT,
   patientsDELETE,
 } = require("../controllers/patients");
+const { db_ExistDNI } = require("../helpers/db_validates");
 
 const router = Router();
 
@@ -24,19 +25,36 @@ router.post(
   [
     check("name", "El name es obligatorio").not().isEmpty(),
     check("lastname", "El lastname es obligatorio").not().isEmpty(),
-    check("phone", "El phone es obligatorio").not().isEmpty(),
     check("dni", "El dni es obligatorio").not().isEmpty(),
-    check("weight", "El weight es obligatorio").not().isEmpty(),
+    check("dni").custom((dni) => db_ExistDNI(dni)),
     check("age", "El age es obligatorio").not().isEmpty(),
-    check("height", "El height es obligatorio").not().isEmpty(),
-    check("diseases", "El diseases es obligatorio").not().isEmpty(),
     check("allergicMedicines", "El allergicMedicines es obligatorio")
       .not()
       .isEmpty(),
-    check("bloodType", "El bloodType es obligatorio").not().isEmpty(),
-    check("bloodPressure", "El bloodPressure es obligatorio").not().isEmpty(),
-    check("emergencyContact", "El contacto es obligatorio").not().isEmpty(),
-
+    check(
+      "emergencyContact.*.name",
+      "El campo nombre del contacto de emergencia es requerido"
+    )
+      .not()
+      .isEmpty(),
+    check(
+      "emergencyContact.*.phone",
+      "El campo teléfono del contacto de emergencia es requerido"
+    )
+      .not()
+      .isEmpty(),
+    check(
+      "emergencyContact.*.relationship",
+      "El campo parentezco del contacto de emergencia es requerido"
+    )
+      .not()
+      .isEmpty(),
+    check(
+      "emergencyContact.*.address",
+      "El campo direccion del contacto de emergencia es requerido"
+    )
+      .not()
+      .isEmpty(),
     validate_fields,
   ],
   patientsPOST
