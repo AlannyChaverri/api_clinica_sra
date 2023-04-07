@@ -1,13 +1,12 @@
 const { request, response } = require("express");
-const Paciente = require("../models/patients");
+const Paciente = require("../models/patients.js");
 var bcrypt = require("bcryptjs");
 
-//Getall
-//GetById
+
 
 const patientsGETPOST = async (req = request, res = response) => {
   try {
-    const patients = await Paciente.find();
+    const patients = await Paciente.find({"state":true});
     res.status(200).json({
       msg: "Mensaje desde el metodo GET",
       patients,
@@ -22,7 +21,7 @@ const patientsGET = async (req = request, res = response) => {
   try {
     // const rol = { rol: "public", google: true };
     //const {limit}=req.query;
-    const patients = await Paciente.find();
+    const patients = await Paciente.find({"state":true});
     res.render("patients", { patients });
   } catch (err) {
     console.log(err);
@@ -43,7 +42,7 @@ const patientsPOST = async (req = request, res = response) => {
       diseases,
       allergicMedicines,
       bloodType,
-      bloodPressure,
+      pressure,
       emergencyContact,
     } = req.body;
     const paciente = new Paciente({
@@ -57,8 +56,8 @@ const patientsPOST = async (req = request, res = response) => {
       diseases,
       allergicMedicines,
       bloodType,
-      bloodPressure,
-      emergencyContact,
+      pressure,
+      emergencyContact
     });
     await paciente.save();
     res.json({
@@ -100,8 +99,7 @@ const patientsDELETE = async (req = request, res = response) => {
   try {
     const { id } = req.params;
     const filter = { _id: id };
-    const patients = await Paciente.findByIdAndDelete(filter);
-
+    const  patients = await Paciente.findByIdAndUpdate(filter,{state:false});
     res.json({
       ok: 200,
       msg: "Mensaje desde el metodo DELETE",

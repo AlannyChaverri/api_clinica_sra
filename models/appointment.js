@@ -1,36 +1,37 @@
-const mongoose = require("mongoose");
+const { Schema, model } = require('mongoose');
 
-const SchemaAppointmento = new mongoose.Schema({
-  patient: {
-    name: {
-      type: String,
-      required: [true, "El campo nombre es requerido"],
+const SchemaAppointment= new Schema({
+    patient: {
+        name: {
+            type: String,
+            required: true
+        },
+        lastname: {
+            type: String,
+            required: true
+        },
+        phone: {
+            type: String,
+            required: true
+        }
     },
-    lastname: {
-      type: String,
-      required: [true, "El campo apellido es requerido"],
+    datetime: {
+        type: Date,
+        require: true
     },
-    dni: {
-      type: String,
-      required: [true, "El campo cedula es requerido"],
+    doctor: {
+        _id: { type: String },
+        name: { type: String },
+        speciality: {type: String}
     },
-    phone: {
-      type: String,
-      required: [true, "El campo telefono es requerido"],
+    state: {
+        type: Boolean,
+        default: true
     },
-  },
-  datehour: {
-    type: Date,
-    required: [true, "El campo fecha y hora es requerido"],
-  },
-  specialty: {
-    type: String,
-    required: [true, "El campo especialidad es requerido"],
-  },
-  doctor: {
-    type: String,
-    required: [true, "El campo doctor es requerido"],
-  },
+    user:{
+        type: String,
+        required: true
+    }
 });
 
-module.exports = mongoose.model("appointment", SchemaAppointmento);
+module.exports = model('appointment', SchemaAppointment);

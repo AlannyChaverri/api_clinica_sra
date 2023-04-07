@@ -1,11 +1,10 @@
 {
-  "name": "api_clinica_sra",
+  "name": "proyectoweb",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node app.js",
-    "dev": "nodemon app.js"
+    "start": "nodemon index",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
@@ -19,9 +18,16 @@
     "express": "^4.18.2",
     "express-validator": "^6.15.0",
     "jsonwebtoken": "^9.0.0",
-    "mongoose": "^7.0.3"
-  },
-  "devDependencies": {
+    "mongoose": "^7.0.3",
     "nodemon": "^2.0.22"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ChavesZay/proyectoWeb3Final.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ChavesZay/proyectoWeb3Final/issues"
+  },
+  "homepage": "https://github.com/ChavesZay/proyectoWeb3Final#readme",
+  "description": ""
 }

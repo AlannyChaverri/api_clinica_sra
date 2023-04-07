@@ -1,30 +1,36 @@
-const { Schema, model } = require("mongoose");
+const {Schema,model}=require('mongoose');
 
-const SchemaUsuario = new Schema({
-  name: {
-    type: String,
-    required: [true, "El campo nombre es requerido"],
-  },
 
-  password: {
-    type: String,
-    required: [true, "El campo password es requerido"],
-  },
+const SchemaUsuario= new Schema({
+name:{
+    type:String,
+    required:[true,'El campo nombre es requerido']
+},
 
-  email: {
-    type: String,
-    required: [true, "El campo email es requerido"],
-  },
+password:{
+    type:String,
+    required:[true,'El campo password es requerido']
+},
 
-  google: {
-    type: Boolean,
-    default: false,
-  },
+email:{
+    type:String,
+    required:[true,'El campo email es requerido']
+},
 
-  rol: {
-    type: String,
-    required: [true, "El campo rol es requerido"],
-  },
+google:{
+    type:Boolean,
+    default:false
+},
+
+role:{
+    type:String,
+    default:"public",
+},
+state:{
+    type:Boolean,
+    default:true
+}
+
 });
 
-module.exports = model("user", SchemaUsuario);
+module.exports=model('user',SchemaUsuario);
