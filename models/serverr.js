@@ -48,11 +48,11 @@ class Server {
   }
 
   routes() {
-    this.app.use(this.userPath, require("../routes/users.js"));
-    this.app.use(this.citaPath, require("../routes/citas.js"));
-    this.app.use(this.authPath, require("../routes/auth.js"));
-    this.app.use(this.consultPath, require("../routes/consult.js"));
-    this.app.use(this.patientsPath, require("../routes/patients.js"));
+    this.app.use(this.userPath, require("../routes/users"));
+    this.app.use(this.citaPath, require("../routes/citas"));
+    this.app.use(this.authPath, require("../routes/auth"));
+    this.app.use(this.consultPath, require("../routes/consult"));
+    this.app.use(this.patientsPath, require("../routes/patients"));
   }
 
   middleWares() {

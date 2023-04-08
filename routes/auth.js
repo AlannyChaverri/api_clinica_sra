@@ -1,8 +1,7 @@
 const { Router } = require("express");
+const { login, loginView } = require("../controllers/auth");
 
 const router = Router();
-
-const { login, loginView } = require("../controllers/auth");
 
 router.get("/IniciarSesion", loginView);
 
