@@ -1,15 +1,11 @@
-const {Router}=require('express');
+const { Router } = require("express");
 
-const router=Router();
+const router = Router();
 
-const {login, loginView} =require('../controllers/auth.js');
+const { login, loginView } = require("../controllers/auth");
 
 router.get("/IniciarSesion", loginView);
 
-router.post("/login",login);
+router.post("/login", login);
 
-module.exports=router;
-
-
-
-
+module.exports = router;

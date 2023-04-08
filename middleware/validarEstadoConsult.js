@@ -1,25 +1,24 @@
 const { request, response } = require("express");
-const Consult =require('../models/consults.js')
+const Consult = require("../models/consults");
 
 const validarEstadoConsult = async (req = request, res = response, next) => {
-    try {
-        const { id } = req.params;
-        const consulta = await Consult.findById(id);
-        
-        if (consulta.state==false) {
-            return res.status(400).json({
-                ok: false,
-                msg: 'Esta consulta ya esta eliminada'
-            })
-        }
+  try {
+    const { id } = req.params;
+    const consulta = await Consult.findById(id);
 
-    } catch (error) {
-        return res.status(400).json({
-            ok: false,
-            msg: 'Error en el estado de la consulta'
-        })
+    if (consulta.state == false) {
+      return res.status(400).json({
+        ok: false,
+        msg: "Esta consulta ya esta eliminada",
+      });
     }
-    next();
-}
+  } catch (error) {
+    return res.status(400).json({
+      ok: false,
+      msg: "Error en el estado de la consulta",
+    });
+  }
+  next();
+};
 
-module.exports={validarEstadoConsult}
+module.exports = { validarEstadoConsult };

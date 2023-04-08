@@ -1,6 +1,6 @@
 const { request, response } = require("express");
 const Usuario = require("../models/users");
-const Doctor = require("../models/doctor.js");
+const Doctor = require("../models/doctor");
 var bcrypt = require("bcryptjs");
 
 const usersGETPOST = async (req = request, res = response) => {
