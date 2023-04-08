@@ -1,9 +1,9 @@
 const { request, response } = require("express");
 const jwt = require("jsonwebtoken");
 
-const validarJWT = async (req = request, res = response, next) => {
-  const token = req.header("auth");
-  //si el token viene
+const validarJWT = (req = request, res = response, next) => {
+  const token = req.header("token");
+
   if (!token) {
     return res.status(400).json({
       ok: false,
@@ -11,19 +11,17 @@ const validarJWT = async (req = request, res = response, next) => {
     });
   }
 
-  //Si el token es valido
   try {
-    const payload = jwt.verify(token, process.env.SECRETORPRIVATEKEY);
+    const payload = jwt.verify(token, process.env.SECRETEORPRIVATEKEY);
     const { id } = payload;
-    //Cargar al request
-    req.user = id;
-  } catch (error) {
-    return res.status(400).json({
+    req.id = id;
+  } catch (err) {
+    console.log(err);
+    res.status(400).json({
       ok: false,
-      msg: "El token no es valido",
+      msg: "Error en el token",
     });
   }
-
   next();
 };
 
