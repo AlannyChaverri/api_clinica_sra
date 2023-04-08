@@ -53,7 +53,7 @@ class Server {
   routes() {
     this.app.use(this.usersPath, require("../routes/users"));
     this.app.use(this.patientsPath, require("../routes/patients"));
-    this.app.use(this.appointmentsPath, require("../routes/appointment"));
+    this.app.use(this.appointmentsPath, require("../routes/citas"));
     this.app.use(this.auth, require("../routes/auth"));
 
     this.app.use(this.citaPath, require("../routes/citas"));
