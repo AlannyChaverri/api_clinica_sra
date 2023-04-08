@@ -1,0 +1,13 @@
+ejemplos para postman
+post
+{
+    "name": "ejm",
+    "password":"11111111",
+    "email": "ejm@gmail.com",
+    "google": true,
+    "rol": "ADMIN"
+}
+
+
+login
+http://127.0.0.1:8082/api/auth/login

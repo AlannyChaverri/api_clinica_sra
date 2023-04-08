@@ -1,6 +1,6 @@
 const express = require("express");
-const cors = require("cors");
 require("dotenv").config();
+const cors = require("cors");
 const conectorMONGO = require("../database/mongo");
 const bodyParser = require("body-parser");
 
@@ -9,22 +9,19 @@ class Server {
     this.app = express();
     this.app.use(cors());
     this.port = process.env.PORT;
-    this.usersPath = "/api/users";
+    this.userPath = "/api/users";
+    this.authPath = "/api/auth";
+    this.citaPath = "/api/appointments";
     this.patientsPath = "/api/patients";
-    this.auth = "/api/auth";
-    this.appointmentsPath = "/api/appointments";
+    this.consultPath = "/api/consults";
 
-    this.citaPath = "/api/citas";
-
-    //invocamos nuestros metodos
     this.middleWares();
     this.routes();
-    this.MongoDB();
+    this.conectarMongo();
 
     this.app.set("view engine", "ejs");
     this.app.set("views", __dirname + "/../views");
   }
-
   listen() {
     this.app.listen(this.port, () => {
       console.log(
@@ -38,7 +35,7 @@ class Server {
         `*  Server -> http://127.0.0.1:${this.port}/api/patients/   *`
       );
       console.log(
-        `*  Server -> http://127.0.0.1:${this.port}/api/citas/      *`
+        `*  Server -> http://127.0.0.1:${this.port}/api/appointments/ *`
       );
       console.log("*                                                  *");
       console.log(
@@ -51,12 +48,11 @@ class Server {
   }
 
   routes() {
-    this.app.use(this.usersPath, require("../routes/users"));
-    this.app.use(this.patientsPath, require("../routes/patients"));
-    this.app.use(this.appointmentsPath, require("../routes/appointment"));
-    this.app.use(this.auth, require("../routes/auth"));
-
-    this.app.use(this.citaPath, require("../routes/citas"));
+    this.app.use(this.userPath, require("../routes/users.js"));
+    this.app.use(this.citaPath, require("../routes/citas.js"));
+    this.app.use(this.authPath, require("../routes/auth.js"));
+    this.app.use(this.consultPath, require("../routes/consult.js"));
+    this.app.use(this.patientsPath, require("../routes/patients.js"));
   }
 
   middleWares() {
@@ -65,9 +61,8 @@ class Server {
     this.app.use(express.static("public"));
   }
 
-  MongoDB() {
+  conectarMongo() {
     conectorMONGO();
   }
 }
-
 module.exports = Server;
