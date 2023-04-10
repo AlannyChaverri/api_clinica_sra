@@ -5,7 +5,7 @@ const Appointment = require("../models/appointment");
 
 //Valida que sea un rol autorizado y que el rol public solo aplique una cita
 const validarRolCita = async (req = request, res = response, next) => {
-  const token = req.header("auth");
+  const token = req.header("token");
   try {
     const roles = ["recepcionista", "public", "admin"];
     const payload = jwt.verify(token, process.env.SECRETORPRIVATEKEY);

@@ -13,7 +13,7 @@ const {
 
 const router = Router();
 
-router.get("/", validarJWT, patientsGETPOST);
+router.get("/", [validarJWT], patientsGETPOST);
 router.get("/usuarios", patientsGET);
 
 router.post(
@@ -70,7 +70,7 @@ router.post(
   patientsPOST
 );
 
-router.put("/:id", patientsPUT);
+router.put("/:id", [validarJWT], patientsPUT);
 
 router.delete("/:id", patientsDELETE);
 
