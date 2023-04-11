@@ -60,9 +60,9 @@ class Server {
   }
 
   middleWares() {
+    this.app.use(express.static("public"));
     this.app.use(bodyParser.urlencoded({ extended: true }));
     this.app.use(express.json());
-    this.app.use(express.static("public"));
   }
 
   MongoDB() {
