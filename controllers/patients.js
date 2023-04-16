@@ -58,6 +58,20 @@ const patientsPOST = async (req = request, res = response) => {
       emergencyContact,
     });
     await paciente.save();
+    console.log(
+      name,
+      lastname,
+      phone,
+      dni,
+      weight,
+      age,
+      height,
+      diseases,
+      allergicMedicines,
+      bloodType,
+      pressure,
+      emergencyContact
+    );
     res.json({
       ok: 200,
       msg: "Mensaje desde el metodo POST",
@@ -65,6 +79,20 @@ const patientsPOST = async (req = request, res = response) => {
     });
   } catch (err) {
     console.log(err);
+    console.log(
+      name,
+      lastname,
+      phone,
+      dni,
+      weight,
+      age,
+      height,
+      diseases,
+      allergicMedicines,
+      bloodType,
+      pressure,
+      emergencyContact
+    );
     throw new Error("Error en el metodo POST");
   }
 };
